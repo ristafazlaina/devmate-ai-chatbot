@@ -20,8 +20,14 @@ class ChatComponent extends Component
         $this->message = '';
 
         // 2. Panggil AI
-        $result = OpenAI::chat()->create([
-            'model' => 'llama3-8b-8192',
+        // 2. Panggil AI (Jalur khusus untuk Groq)
+        $client = \OpenAI::factory()
+            ->withApiKey(env('OPENAI_API_KEY'))
+            ->withBaseUri('api.groq.com/openai/v1') // Kita paksa arahkan ke server Groq
+            ->make();
+
+        $result = $client->chat()->create([
+            'model' => 'llama-3.1-8b-instant',
             'messages' => [
                 ['role' => 'system', 'content' => 'Kamu adalah DevMate, asisten coding santai untuk mahasiswa IT. Kamu ahli di Laravel, Docker, dan IoT.'],
                 ['role' => 'user', 'content' => $currentMessage],
