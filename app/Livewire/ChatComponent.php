@@ -21,7 +21,7 @@ class ChatComponent extends Component
 
         // 2. Panggil AI
         $result = OpenAI::chat()->create([
-            'model' => 'gpt-4o-mini',
+            'model' => 'llama3-8b-8192',
             'messages' => [
                 ['role' => 'system', 'content' => 'Kamu adalah DevMate, asisten coding santai untuk mahasiswa IT. Kamu ahli di Laravel, Docker, dan IoT.'],
                 ['role' => 'user', 'content' => $currentMessage],
