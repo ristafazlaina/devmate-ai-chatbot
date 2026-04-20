@@ -2,11 +2,11 @@
 <html>
 <head>
     <title>DevMate - AI Chatbot</title>
-    @vite('resources/css/app.css')
+    <script src="https://cdn.tailwindcss.com"></script>
     @livewireStyles
 </head>
 <body class="bg-white">
-    @livewire('chat-component')
+    @livewire(\App\Livewire\ChatComponent::class)
     @livewireScripts
 </body>
 </html>
